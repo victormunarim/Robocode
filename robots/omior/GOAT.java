@@ -7,13 +7,20 @@ import robocode.*;
 /**
  * GOAT - a robot by (your name here)
  */
-public class GOAT extends Robot
+public class GOAT extends AdvancedRobot
 {
 	/**
 	 * run: GOAT's default behaviorss
 	 */
 	public void run() {
-		// Initialization of the robot should be put here
+		//leitor de medidas do campo de batalha
+		double largura = getBattleFieldWidth();
+		double altura = getBattleFieldHeight();
+		out.println(largura);
+		out.println(altura);
+
+
+// Initialization of the robot should be put here
 
 		// After trying out your robot, try uncommenting the import at the top,
 		// and the next line:
