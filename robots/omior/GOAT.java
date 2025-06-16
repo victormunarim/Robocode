@@ -16,9 +16,23 @@ public class GOAT extends AdvancedRobot
 		//leitor de medidas do campo de batalha
 		double largura = getBattleFieldWidth();
 		double altura = getBattleFieldHeight();
-		out.println(largura);
-		out.println(altura);
+		double posX = getX();
+		double posY = getY();
+		double direcao = getHeading();
+				if (direcao<=180)
+					{turnRight(180-direcao);}
+				else {turnLeft(direcao-180);}
+		double alturaRobo = getHeight();
+  		ahead(posY-alturaRobo/2);
+						turnRight(135);
+	while (true) { ahead(1000); }	
+	
 
+							// execute();
+		
+		
+		
+}
 
 // Initialization of the robot should be put here
 
@@ -28,14 +42,9 @@ public class GOAT extends AdvancedRobot
 		// setColors(Color.red,Color.blue,Color.green); // body,gun,radar
 
 		// Robot main loop
-		while(true) {
+
 			// Replace the next 4 lines with any behavior you would like
-			ahead(100);
-			turnGunRight(360);
-			back(100);
-			turnGunRight(360);
-		}
-	}
+
 
 	/**
 	 * onScannedRobot: What to do when you see another robot
@@ -50,7 +59,8 @@ public class GOAT extends AdvancedRobot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Replace the next line with any behavior you would like
-		back(10);
+		turnLeft(50);
+		turnRight(50);
 	}
 	
 	/**
@@ -58,6 +68,9 @@ public class GOAT extends AdvancedRobot
 	 */
 	public void onHitWall(HitWallEvent e) {
 		// Replace the next line with any behavior you would like
-		back(20);
+
+	turnRight(90);
+		
+	
 	}	
 }
