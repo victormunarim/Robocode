@@ -51,7 +51,14 @@ public class GOAT extends AdvancedRobot
 	 */
 	public void onScannedRobot(ScannedRobotEvent e) {
 		// Replace the next line with any behavior you would like
-		fire(1);
+		double distanciaInimigo = e.getDistance();
+		double direcaoInimigoRelativa = e.getBearing();
+		
+		if(distanciaInimigo < 200){
+			turnRight(direcaoInimigoRelativa);
+			fire(0.1);
+		}
+		
 	}
 
 	/**
@@ -59,8 +66,7 @@ public class GOAT extends AdvancedRobot
 	 */
 	public void onHitByBullet(HitByBulletEvent e) {
 		// Replace the next line with any behavior you would like
-		turnLeft(50);
-		turnRight(50);
+		
 	}
 	
 	/**
