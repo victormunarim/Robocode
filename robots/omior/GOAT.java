@@ -16,23 +16,34 @@ public class GOAT extends AdvancedRobot
 		//leitor de medidas do campo de batalha
 		double largura = getBattleFieldWidth();
 		double altura = getBattleFieldHeight();
-		double posX = getX();
-		double posY = getY();
+		double posYInicial = getY();
 		double direcao = getHeading();
-				if (direcao<=180)
-					{turnRight(180-direcao);}
-				else {turnLeft(direcao-180);}
-		double alturaRobo = getHeight();
-  		ahead(posY-alturaRobo/2);
-						turnRight(135);
-	while (true) { ahead(1000); }	
-	
+		if (direcao<=180)
+		{
+		turnRight(180-direcao);
+		ahead(posYInicial - 50);
+		turnRight(135);
+		while(getX() > 50 && getY() < altura - 50) {
+		ahead(30);
+		}	
+		}
+		else
+		{
+		turnLeft(direcao-180);
+		ahead(posYInicial - 50);
+		turnRight(135);
+		while(getX() > 50 && getY() < altura - 50) {
+		ahead(30);
+		}				
+		}
+		
+		while (true) {
+				turnRight(125);
+				ahead(100);
+			while (!GOAT.pertoDaParede(getX(), getY(), largura, altura)){ahead(50);}
+		}
+	}
 
-							// execute();
-		
-		
-		
-}
 
 // Initialization of the robot should be put here
 
@@ -56,7 +67,7 @@ public class GOAT extends AdvancedRobot
 		
 		if(distanciaInimigo < 200){
 			turnRight(direcaoInimigoRelativa);
-			fire(0.1);
+			fire(3);
 		}
 		
 	}
@@ -64,19 +75,17 @@ public class GOAT extends AdvancedRobot
 	/**
 	 * onHitByBullet: What to do when you're hit by a bullet
 	 */
-	public void onHitByBullet(HitByBulletEvent e) {
-		// Replace the next line with any behavior you would like
-		
-	}
 	
 	/**
 	 * onHitWall: What to do when you hit a wall
 	 */
-	public void onHitWall(HitWallEvent e) {
-		// Replace the next line with any behavior you would like
-
-	turnRight(90);
+	public static boolean pertoDaParede(double posX, double posY, double largura, double altura) {
+		// Replace the next line with any behavior you would like;
 		
-	
+		if (posX <= 80 || posY <= 80 || posX >= largura - 80 || posY >= altura - 80)
+		{
+			return true;
+		}
+		else {return false;}
 	}	
 }
