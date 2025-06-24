@@ -44,10 +44,19 @@ public class GOAT extends AdvancedRobot
 		double distanciaInimigo = e.getDistance();
 		double direcaoInimigoRelativa = e.getBearing();
 		
+			if (distanciaInimigo < 200){
+				turnRight(direcaoInimigoRelativa);	
+				fire(3);}
+			if (distanciaInimigo == 200){
+				turnRight (direcaoInimigoRelativa + 90);
+				fire(3);		
+	}
 		//segue o robo inimigo
 		if(distanciaInimigo < 200){
-			turnRight(direcaoInimigoRelativa);
-			fire(3);
+
+
+			
+
 		}	
 	}
 
